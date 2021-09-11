@@ -8,7 +8,8 @@
     <link rel="icon" href="/static/images/Pacman.png">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
     <title>{{ title }}</title>
     <!-- Load d3.js & color scale -->
     <script src="https://d3js.org/d3.v4.js"></script>
@@ -23,11 +24,11 @@
     <div id = "articlename">
       <h1>{{ title }}</h1>
     </div>
-    <div id = "summed">
+    <div id = "summed", class="sum_class">
       <p><strong>{{ summary }}</strong></p>
     </div>
 
-    <div class="card mb-3" style="max-width: 800px; margin:auto; float: right; margin-top: 2.5rem;">
+    <div class="card mb-3" style="max-width: 800px; margin:auto; float: left; margin-top: 2.5rem;">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="{{ image }}" class="info_img">
@@ -46,12 +47,9 @@
         </div>
       </div>
     </div>
-
+<div id="container" style="width: 500px; height: 400px;"></div>
     <!-- Create a div where the graph will take place -->
     <div id="my_dataviz" class="graph_format"></div>
-
-
-
 
 
     <script>
@@ -147,6 +145,39 @@
             })
 
 
+    </script>
+    <script>
+        let wordlist = {{ wordslist|safe }}
+
+
+        anychart.onDocumentReady(function() {
+        var data = [
+            {"x": `${wordlist[0]}`, "value": 1090000000, category: "Sino-Tibetan"},
+            {"x": `${wordlist[1]}`, "value": 983000000, category: "Indo-European"},
+            {"x": `${wordlist[2]}`, "value": 544000000, category: "Indo-European"},
+            {"x": `${wordlist[3]}`, "value": 527000000, category: "Indo-European"},
+            {"x": `${wordlist[4]}`, "value": 422000000, category: "Afro-Asiatic"},
+            {"x": `${wordlist[5]}`, "value": 281000000, category: "Austronesian"},
+            {"x": `${wordlist[6]}`, "value": 267000000, category: "Indo-European"},
+            {"x": `${wordlist[7]}`, "value": 261000000, category: "Indo-European"},
+            {"x": `${wordlist[8]}`, "value": 229000000, category: "Indo-European"},
+            {"x": `${wordlist[9]}`, "value": 229000000, category: "Indo-European"},
+        ];
+
+        // create a tag (word) cloud chart
+        var chart = anychart.tagCloud(data);
+
+        // set a chart title
+
+        chart.angles([0])
+        chart.background("none")
+        // enable a color range
+
+        // display the word cloud chart
+        chart.container("container");
+        chart.draw();
+        document.getElementsByClassName('anychart-credits')[0].style.visibility = 'hidden';
+        });
     </script>
   </div>
 </body>
