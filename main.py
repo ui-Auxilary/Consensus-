@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 
 def parse_url(url):
-    r = requests.get(f"https://api.smmry.com/&SM_KEYWORD_COUNT=10&SM_LENGTH=5&SM_API_KEY=243238153B&SM_URL={url}")  
+    r = requests.get(f"https://api.smmry.com/&SM_KEYWORD_COUNT=10&SM_LENGTH=5&SM_API_KEY=3B8FFFD0FB&SM_URL={url}")  
     return (r.json())
 
 def get_image(url):
@@ -47,9 +47,10 @@ def form():
     title = soup.title.get_text()
 
     keywords = text['sm_api_keyword_array'][0:3]
+    wordlist = text['sm_api_keyword_array']
     emotion = te.get_emotion(text['sm_api_content'])
 
-    return render_template('poster.html', title=title, summary=summ_text, image=image_url, emotion=emotion, keywords=keywords)
+    return render_template('poster.html', title=title, summary=summ_text, image=image_url, emotion=emotion, keywords=keywords, wordslist=wordlist)
 
 
 
