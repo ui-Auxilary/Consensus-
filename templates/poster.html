@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:bold|Open+Sans">
+    <link rel="icon" href="/static/images/Pacman.png">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
@@ -14,29 +15,37 @@
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 </head>
 <body>
-
-  <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    
-    <div id = "top">
+ 
+  <div class="wrapper">
+   
+    <div id = "articlename">
       <h1>{{ title }}</h1>
     </div>
     <div id = "summed">
-      <p>{{ summary }}</p>
+      <p><strong>{{ summary }}</strong></p>
     </div>
-    <img src="{{ image }}" class="info_img">
 
-    <h3>Keywords</h3>
-    <ul>
-    {% for word in keywords %}
-    <li>{{ word }}</li>
-    {% endfor %}
-    </ul>
-<!--    
-<form action="{{ url_for('form') }}" method="post">
-    <input type="text" name="projectform">
-    <input type="submit">
-</form> -->
+    <div class="card mb-3" style="max-width: 800px; margin:auto; float: right; margin-top: 2.5rem;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ image }}" class="info_img">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <div class="card-title">
+                <h3>Keywords</h3>
+                <ul>
+                {% for word in keywords %}
+                <li>{{ word }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Create a div where the graph will take place -->
     <div id="my_dataviz" class="graph_format"></div>
@@ -49,8 +58,8 @@
 
         // set the dimensions and margins of the graph
         var width = 500
-            height = 450
-            margin = 40
+            height = 300
+            margin = 20
 
         // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
         var radius = Math.min(width, height) / 2 - margin
@@ -139,5 +148,6 @@
 
 
     </script>
+  </div>
 </body>
 </html>
