@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:bold|Open+Sans">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Consensus</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Option 1: Bootstrap Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+      <div class="header">
+        <h1>Welcome to Consensus!</h1>
+      </div>
+
+      <div class="row justify-content-center padding">
+        <div class="col-md-8 ftco-animate fadeInUp ftco-animated">
+            <form action="{{ url_for('form') }}" method="post" class="domain-form">
+                <div class="form-group d-md-flex"> <input type="url" class="form-control px-4" placeholder="Type in the url of an article to summarise..." pattern="https://.*" required name="projectform"> <input type="submit" class="search-domain btn btn-primary px-5" value="Enter"> </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
