@@ -22,7 +22,7 @@ p {
 }
 .graph_format {
     display: inline-block;
-    float:left;
+    float: left;
 }
 
 header {
@@ -36,4 +36,8 @@ body {
   -o-background-size: cover;
   background-size: cover;
   padding: 100px;
+}
+
+#container {
+    float: right;
 }
