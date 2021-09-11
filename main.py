@@ -3,7 +3,8 @@ from collections import OrderedDict
 import numpy as np
 
 import requests
-
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 import text2emotion as te
 
 app = Flask(__name__)
@@ -39,11 +40,13 @@ def form():
 
     image_url = get_image(urlpath)
     text = parse_url(urlpath)
-   
+    print(text)
     summ_text = text['sm_api_content']
 
-    title = text['sm_api_title']
-    keywords = text['sm_api_keyword_array']
+    soup = BeautifulSoup(urlopen(urlpath))
+    title = soup.title.get_text()
+
+    keywords = text['sm_api_keyword_array'][0:3]
     emotion = te.get_emotion(text['sm_api_content'])
 
     return render_template('poster.html', title=title, summary=summ_text, image=image_url, emotion=emotion, keywords=keywords)
