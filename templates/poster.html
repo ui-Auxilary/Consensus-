@@ -77,8 +77,8 @@
 
         // set the color scale
         var color = d3.scaleOrdinal()
-          .domain(["Angry", "Fear", "Happy", "Sad", "Surprise"])
-          .range(d3.schemeDark2);
+          .domain(["Anger", "Fear", "Hope", "Sadness", "Shock"])
+          .range(["#ff0022", "#23395d", "#00FF00","#0000FF", "#eeff00"]);
 
         // Compute the position of each group on the pie:
         var pie = d3.pie()
@@ -180,5 +180,41 @@
         });
     </script>
   </div>
+  <script src='https://unpkg.com/trianglify@^4/dist/trianglify.bundle.js'></script>
+  <script>
+    const pattern = trianglify({
+      width: window.innerWidth,
+      height: window.innerHeight,
+      {% if bcol == 0 %}
+        xColors: ['#FFFFFF', '#4CAFE8', '#FFFFFF'],
+      {% elif bcol == 1 %}
+        xColors: ['#FFFFFF', '#047c99', '#FFFFFF'],
+      {% elif bcol == 2 %}
+        xColors: ['#FFFFFF', '#e8de04', '#FFFFFF'],
+      {% elif bcol == 3 %}
+        xColors: ['#FFFFFF', '#e0115f', '#FFFFFF'],
+      {% elif bcol == 4 %}
+        xColors: ['#FFFFFF', '#f06292', '#FFFFFF'],
+      {% endif %}
+      yColors: 'match',
+      colorSpace: 'lab'
+    })
+    document.body.appendChild(pattern.toCanvas())
+  </script>
 </body>
 </html>
+
+
+<!-- Sad
+'#FFFFFF', '#d10d2f', '#FFFFFF' -->
+
+<!-- angry
+'#FFFFFF', '#e0115f', '#FFFFFF' -->
+<!-- 
+shock
+'#FFFFFF', '#e8de04', '#FFFFFF' -->
+
+<!-- fear
+'#FFFFFF', '#047c99', '#FFFFFF' -->
+<!-- hope
+'#FFFFFF', '#f06292', '#FFFFFF'], -->
