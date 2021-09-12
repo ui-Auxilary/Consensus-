@@ -5,12 +5,19 @@ h1, h3 {
 
 #logo {
   display: block;
-  margin: auto;
-  width: 10%;
+  margin: -1.5rem -6rem -1.5rem -6rem;
+  text-align: center;
+  padding: 2rem;
+  padding-top: 8rem;
 }
 
 #articlename {
-  padding: 90px;
+  padding: 2rem;
+}
+
+#pacman {
+  width: 15%;
+  height: 15%;
 }
 
 p {
@@ -29,15 +36,56 @@ header {
   padding: 60px;
 }
 
-body { 
+.header {
+  padding: 20px;
+}
+
+input[type="submit"].search-domain {
+  margin-left: 1rem;
+}
+/* body { 
   background: url("../images/background.png") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   padding: 100px;
-}
+} */
 
 #container {
     float: right;
+}
+
+.wrapper {
+  padding: 1.5rem 6rem 1.5rem 6rem;
+}
+
+canvas {
+  display: block;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+
+#summed {
+  background: rgba(255,255,255,0.6);
+  padding: 25px;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 760px) {
+  input[type="submit"].search-domain {
+    margin-left: 0rem;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .header {
+    padding: 0px;
+  }
+
+  #container {
+    width: 55vw;
+    height: 35v;
+  }
 }
